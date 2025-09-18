@@ -1,0 +1,329 @@
+.main{
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+.main_section{
+  flex-wrap: wrap;
+  gap: 15px;
+  border-radius: 20px;
+  padding: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1100px;
+  box-shadow: inset 0px 0px 24px 0px rgb(0 78 80 / 69%);
+}
+.main_one_box_title{
+    width: 200px;
+    text-align: center;
+    padding: 15px 0;
+}
+.main_one_box_title h2{
+    font-size: 28px;
+    font-weight: 900;
+    color: transparent; /* всередині прозорий */
+    -webkit-text-stroke: 1px #00fdff; /* товщина та колір обводки */
+    text-stroke: 1px #000000; /* для браузерів з підтримкою */
+    text-shadow: 3px 3px 9px rgb(0, 0, 0);
+}
+.main_one_box_logo_slots{
+  text-align: center;
+}
+.main_one_box_logo_slots img{
+    width: 200px;
+    height: 200px;
+    border-radius: 20%;
+}
+.main_one_box_button_pay{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+.spin_button {
+  position: relative;
+  width: 120px;
+  height: 30px;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  animation: spin 4s linear infinite; /* постійна анімація */
+  will-change: transform;
+}
+
+@keyframes spin {
+  0% {
+    transform: perspective(1000px) rotateX(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(360deg);
+  }
+}
+.spin_button span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ffe5;
+  background-color: rgba(0, 0, 0, 1);
+  background-image: linear-gradient(90deg, rgb(122, 0, 0) 0%, rgba(0, 255, 164, 1) 100%);
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 2px;
+  transition: 0.5s;
+  border: 2px solid #00ffff;
+  box-sizing: border-box;
+  box-shadow: inset 0 20px 50px rgba(0, 0, 0, 0.2); /* виправив insert → inset */
+}
+.spin_button:hover span {
+  color: #fff;
+  background: rgba(0, 160, 112, 0.367);
+}
+.spin_button span:nth-child(1) {
+  transform: rotateX(360deg) translateZ(10px);
+}
+.spin_button span:nth-child(2) {
+  transform: rotateX(270deg) translateZ(10px);
+}
+.spin_button span:nth-child(3) {
+  transform: rotateX(180deg) translateZ(10px);
+}
+.spin_button span:nth-child(4) {
+  transform: rotateX(90deg) translateZ(10px);
+}
+.spin_button span:nth-child(5) {
+  transform: rotateX(0deg) translateZ(10px);
+}
+.img_button_play{
+  width: 20px;
+  height: 20px;
+}
+.main_two_box{
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.main_two_box_RTPmain-box {
+    border-radius: 20%;
+    padding: 15px;
+    border: 2px solid transparent;
+    background-image: linear-gradient(to right, rgb(0 255 154 / 61%), #000000, rgb(0 255 154 / 61%)), /* Верхня межа */ linear-gradient(to bottom, rgb(0 255 154 / 61%), #000000, rgb(0 255 154 / 61%)), /* Права межа */ linear-gradient(to left, rgb(0 255 154 / 61%), #000000, rgb(0 255 154 / 61%)), /* Нижня межа */ linear-gradient(to top, rgb(0 255 154 / 74%), #000000, rgb(0 255 154 / 61%));
+    background-position: top, right, bottom, left;
+    background-size: 100% 2px, 2px 100%, 100% 2px, 2px 100%;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/*---------------------cartu---------------------------------------*/
+.card-container {
+    position: relative;
+    width: 200px;
+    height: 130px;
+    background: linear-gradient(135deg, #000000, #000000);
+    border: 1px solid #00ff9c;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgb(0, 92, 72), inset 0 0 25px rgb(0 0 0), 0 0 100px rgb(0 0 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    transform: rotateX(5deg) rotateY(-5deg);
+    transition: transform 0.3s ease-in-out;
+}
+        
+.card-container:hover {
+    transform: rotateX(0deg) rotateY(0deg) scale(1.05);
+}
+
+.card-container::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid #00ffe7;
+    border-radius: 10px;
+    box-shadow: inset 0 0 15px #006758, 0 0 20px rgb(0 224 255 / 70%);
+    z-index: 1;
+    animation: glow-blink 1.5s infinite alternate;
+}
+
+
+.card-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse-light 3s infinite ease-in-out;
+}
+.card-bg-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle, rgba(255, 215, 0, 0.05) 1px, transparent 1px),
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 215, 0, 0.05) 10px, rgba(255, 215, 0, 0.05) 20px);
+    background-size: 20px 20px;
+    opacity: 0.8;
+    border-radius: 20px;
+}
+.card-text{
+    z-index: 3; /* Increased z-index to be on top of the background */
+    position: absolute;
+    top: 29%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: transparent;
+    -webkit-text-stroke: 0.8px #00ff91;
+    text-stroke: 1px #000000;
+    text-shadow: 3px 3px 4px rgb(0 0 0);
+    font-size: 19px;
+}
+.card-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: transparent;
+    -webkit-text-stroke: 1px #00ebd0;
+    text-stroke: 1px #000000;
+    text-shadow: 0px 0px 3px rgb(0 0 0);
+    z-index: 3; /* Increased z-index to be on top of the background */
+    position: absolute;
+    bottom: 19%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.card-corner-symbol {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #E0E0E0; /* Light gray for spade glow */
+    text-shadow: 
+        0 0 5px #E0E0E0, 
+        0 0 10px #E0E0E0, 
+        0 0 15px rgba(224, 224, 224, 0.5);
+    z-index: 2;
+}
+.card-corner-symbol .value {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.top-left {
+    top: 25px;
+    left: 25px;
+}
+
+.bottom-right {
+    bottom: 25px;
+    right: 25px;
+    transform: rotate(180deg);
+}
+
+.central-symbol {
+    filter: blur(1px);
+    font-size: 9rem;
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #777777;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+@keyframes pulse-glow {
+    from { box-shadow: 0 0 20px var(--accent-color), 0 0 40px var(--gold-color); }
+    to { box-shadow: 0 0 40px var(--accent-color), 0 0 60px var(--gold-color); }
+}
+
+/* @keyframes pulse-light {
+    0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.1; }
+    50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.2; }
+    100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.1; }
+} */
+@keyframes pulse-light {
+    0%, 100% { transform: scale(0.95); opacity: 0.1; }
+    50% { transform: scale(1.05); opacity: 0.2; }
+}
+/* Responsive design */
+@media (max-width: 768px) {
+    :root {
+        --card-width: 250px;
+        --card-height: 375px;
+    }
+}
+@media(max-width:1069px){
+  .main_section {
+    justify-content: center;
+  }
+}
+@media(max-width:580px){
+  .card-container{
+    width: 150px;
+    height: 115px;
+  }
+  .card-text {
+    font-size: 17px;
+  }
+  .card-value{
+    font-size: 25px;
+    bottom: 10%;
+  }
+}
+@media(max-width:500px){
+  .main_one_box_logo_slots img {
+    width: 150px;
+    height: 150px;
+  }
+  .poker-chip-container {
+    width: 125px;
+    height: 125px;
+  }
+  .label{
+    font-size: 11px;
+  }
+  .percentage-value {
+    font-size: 18px;
+  }
+  .border {
+    padding: 5px;
+    margin: 5px;
+  }
+  .main_two_box_statistick {
+    gap: 5px;
+    padding: 5px;
+  }
+  .main_two_box_RTPmain-box {
+    padding: 5px;
+  }
+  .main_two_box_RTPmain-box_average,
+  .main_two_box_RTPmain-box_curent{
+    margin-top: 10px;
+  }
+  .main_section {
+    padding: 5px;
+  }
+  .main {
+    margin-top: 10px;
+  }
+  .central-symbol{
+    font-size: 6rem;
+  }
+}

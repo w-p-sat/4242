@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/header_body.css">
+    <link rel="stylesheet" href="/css/nulstyle.css">
+    <link rel="stylesheet" href="/css/twich.css">
+    <link rel="stylesheet" href="/css/preloader.css">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <title>LuckLens</title>
+</head>
+<body>
+    <section class="border" id="main-content">
+        <header>
+            <div class="box_coin_games">
+                <a href="/index.html">
+                    <img src="./img/завантаження-removebg-preview.png" alt="">
+                </a>
+                <nav class="neon_line"></nav>
+            </div>
+            <div class="box_die_button">
+                <div class="die-button">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </header>
+        <div class="overlay" id="overlay"></div>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <a href="#" class="close-btn">&times;</a>
+                <h2>Навігаційне меню</h2>
+                <a href="#">Головна</a>
+                <a href="#">Про нас</a>
+                <a href="/streams.html">Strim</a>
+            </div>
+        </div>
+        <main class="main_sream">
+            <h1>Slots Streams</h1>
+            <div id="lang-buttons" class="container">
+                <a class="btn" href="#" data-lang="">
+                    <span class="btnInner">All</span>
+                </a>
+                <a class="btn" href="#" data-lang="uk">
+                    <span class="btnInner">Українська</span>
+                </a>
+                <a class="btn" href="#" data-lang="en">
+                    <span class="btnInner">English</span>
+                </a>
+                <a class="btn" href="#" data-lang="ru">
+                    <span class="btnInner">Русский</span>
+                </a>
+                <a class="btn" href="#" data-lang="de">
+                    <span class="btnInner">Deutsch</span>
+                </a>
+                <a class="btn" href="#" data-lang="fr">
+                    <span class="btnInner">Français</span>
+                </a>
+                <a class="btn" href="#" data-lang="es">
+                    <span class="btnInner">Español</span>
+                </a>
+                <a class="btn" href="#" data-lang="pt">
+                    <span class="btnInner">Português</span>
+                </a>
+                <a class="btn" href="#" data-lang="it">
+                    <span class="btnInner">Italiano</span>
+                </a>
+                <a class="btn" href="#" data-lang="pl">
+                    <span class="btnInner">Polski</span>
+                </a>
+            </div>
+            <div id="streams-container"></div>
+            <button id="loadMore">More</button>     
+        </main>
+
+</section>
+<script src="https://player.twitch.tv/js/embed/v1.js"></script>
+<script src="/twich.js"></script>
+<script src="/js/preloader.js"></script>
+</body>
+</html>

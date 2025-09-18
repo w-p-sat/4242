@@ -1,0 +1,213 @@
+.main_sream{
+    padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.main_sream h1{
+    font-size: 28px;
+        color: transparent; /* всередині прозорий */
+    -webkit-text-stroke: 0.8px #00ffb3; /* товщина та колір обводки */
+    text-stroke: 1px #000000; /* для браузерів з підтримкою */
+        margin: 15px 0 0 0;
+}
+#lang-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+#lang-buttons button {
+  padding: 8px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #666;
+  border-radius: 5px;
+  background: #f3f3f3;
+  transition: 0.2s;
+}
+
+#lang-buttons button.active {
+  background: #666;
+  color: white;
+}
+
+#streams-container {
+    margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  width: 100%;
+
+}
+
+.stream {
+  align-items: center;
+        justify-content: center;
+        display: flex;
+    border-radius: 10px;
+padding: 15px;
+  position: relative;
+  width: 700px;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+        border: 2px solid transparent;
+      background-image:
+    linear-gradient(to right, rgba(0, 255, 170, 0.418), black, rgba(0, 255, 170, 0.418)), /* Верхня межа */
+    linear-gradient(to bottom, rgba(0, 255, 170, 0.418), black, rgba(0, 255, 170, 0.418)), /* Права межа */
+    linear-gradient(to left, rgba(0, 255, 170, 0.418), black, rgba(0, 255, 170, 0.418)), /* Нижня межа */
+    linear-gradient(to top, rgba(0, 255, 170, 0.418), black, rgba(0, 255, 170, 0.418)); /* Ліва межа */
+        background-position: top, right, bottom, left;
+    background-size: 100% 2px, 2px 100%, 100% 2px, 2px 100%;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+}
+
+.stream iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    font-size: clamp(18px, 2vw, 24px);
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+/* Контейнер кнопок */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+/* Кнопка */
+.btn {
+    height: 35px;
+    width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 100px;
+  padding: 1px;
+  text-decoration: none;
+  transition: all 0.18s ease-in-out;
+  transform: translate3d(0,0,0);
+  background: none;
+}
+
+.btn::before,
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border-radius: 101.5px;
+  background-size: 100% 100%;
+  background-position: 0 0;
+  background-image: conic-gradient(
+    from 0deg at 50% 50%,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0) 33%,
+    #58DD93 50%,
+    rgba(0,0,0,0) 66%,
+    rgba(0,0,0,0) 100%
+  );
+}
+
+.btn::before {
+  filter: blur(20px);
+}
+
+/* Внутрішня частина кнопки */
+.btnInner {
+    text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 5px;
+  border-radius: 100px;
+  color: #58DD93;
+  font-weight: 500;
+  font-size: 18px;
+  z-index: 1;
+  transition: all 0.18s ease;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(40px);
+  backface-visibility: hidden;
+}
+
+/* Hover ефект */
+.btn:hover .btnInner {
+  background: rgba(88,221,147,0.1);
+  color: #7ff2b3; /* світліший зелений */
+}
+
+/* Active ефект при натисканні */
+.btn:active {
+  transform: scale(0.95);
+  
+}
+.btn.active .btnInner {
+
+  color: #ffffff;           /* білий колір */
+  background-color: #00fbff00; /* зелений фон */
+  border-radius: 100px;
+  padding: 4px 12px;
+}
+.btn.active::before,
+.btn.active::after {
+  background-image: conic-gradient(
+    from 0deg at 50% 50%,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0) 33%,
+    #00eaff 50%,
+    rgba(0,0,0,0) 66%,
+    rgba(0,0,0,0) 100%
+  );
+}
+#loadMore{
+    width: 120px;
+    height: 35px;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 20px;
+    border: solid 1px #00eaff;
+    color: #ffffff;
+    background-color: rgba(89, 131, 252, 0);
+background-image: linear-gradient(90deg, rgba(89, 131, 252, 0) 0%, rgba(0, 0, 0, 1) 100%);
+}
+@media(max-width:600px){
+  #lang-buttons {
+    gap: 5px;
+  }
+  .main_sream {
+    padding: 5px;
+  }
+  .stream{
+    padding: 5px;
+  }
+}

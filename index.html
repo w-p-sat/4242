@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/nulstyle.css">
+    <link rel="stylesheet" href="/css/slots.css">
+    <link rel="stylesheet" href="/css/preloader.css">
+    <link rel="stylesheet" href="/css/header_body.css">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <title>LuckLens</title>
+</head>
+<body>
+    <section class="border" id="main-content">
+        <header>
+            <div class="box_coin_games">
+                <a href="/index.html">
+                    <img src="./img/завантаження-removebg-preview.png" alt="">
+                </a>
+                <nav class="neon_line"></nav>
+            </div>
+            <div class="box_die_button">
+                <button class="die-button">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </button>
+            </div>
+        </header>
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Find your favorite slot...">
+            <button class="Button">
+                <svg  class="Button-svg"width="200" height="50" viewBox="0 0 300 80">
+                    <rect class="Button-line Button-line--outer" stroke-width="8" stroke="#00fffb" stroke-linecap="round" fill="none" x="4" y="4" width="292" height="80" rx="36"/><rect 
+                    class="Button-line Button-line--inner"stroke-width="4"stroke="#daff00" stroke-linecap="round"fill="none" x="4" y="4" width="292" height="80" rx="36"/>
+                </svg>
+                <div class="Button-content">Find</div>
+            </button>
+        </form>
+
+        <div class="overlay" id="overlay"></div>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <a href="#" class="close-btn">&times;</a>
+                <h2>Навігаційне меню</h2>
+                <a href="#">Головна</a>
+                <a href="#">Про нас</a>
+                <a href="/streams.html">Strim</a>
+            </div>
+        </div>
+        <section class="box_list_slots"></section>
+    </section>
+    <script src="/js/preloader.js"></script>
+    <script type="module" src="/games-data.js"></script>
+    <script src="/js/search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module"  src="/js/script.js"></script>
+    <script src="/js/window_info.js"></script>
+    <script type="module" src="/js/games.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
+</body>
+</html>

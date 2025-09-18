@@ -1,0 +1,181 @@
+body.no-scroll {
+    overflow: hidden;
+}
+.sss{
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 1);
+            background-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 19, 8, 0.575) 50%, rgba(0, 0, 0, 1) 100%);
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#main-content {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.5s ease-in-out;
+}
+#main-content.visible {
+    opacity: 1;
+    visibility: visible;
+}
+:root {
+    --neon-color: #00fdff;
+    --neon-shadow: #00fdff;
+    --red-heart: #ff00ff;
+}
+
+#preloader-container {
+    position: fixed;      /* щоб завжди поверх всього */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; 
+    opacity: 0;   
+    transition: opacity 1.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1.5s ease-in-out;
+    pointer-events: all;
+    gap: clamp(5px, 2vw, 30px); 
+    inset: 0;
+}
+    #preloader-container.hidden {
+    opacity: 0; /* коли додаємо hidden, буде плавно зникати */
+    pointer-events: none;
+}
+#preloader-container.visible {
+    opacity: 1;
+}
+.card {
+  width: clamp(70px, 12vw, 160px); /* мін 70px, макс 160px, середнє = 12% ширини вікна */
+  aspect-ratio: 13 / 18;           /* зберігає пропорції карти */
+  background-color: rgba(0, 0, 0, 1);
+
+  border-radius: 5%;               /* тепер відсотки, не пікселі */
+  box-shadow: 0 0 0.8em var(--neon-shadow);
+
+  position: relative;
+  transform-origin: 50% 150%;
+  opacity: 0;
+  transform: translateX(-500px) rotate(-30deg) scale(0.8);
+  animation-name: deal-card, glow-pulse;
+  animation-duration: 1.5s, 2s;
+  animation-timing-function: ease-out, ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1, infinite;
+  animation-direction: normal, alternate;
+}
+.card-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+.card-value-group {
+    position: absolute;
+    z-index: 20;
+}
+
+.top-left-value {
+    top: 5px;
+    left: 5px;
+    text-align: left;
+}
+
+.bottom-right-value {
+    bottom: 5px;
+    right: 5px;
+    transform: rotate(180deg);
+    text-align: left;
+}
+
+.card-value_ {
+    font-family: none;
+    font-size: clamp(8px, 2vw, 28px);
+    line-height: 1;
+    font-weight: 100;
+    color: var(--neon-color);
+    text-shadow: 0 0 0.25em var(--neon-shadow);
+}
+
+.card-symbol_ {
+    font-size: clamp(8px, 2.5vw, 40px); /* ✅ адаптивний символ масті */
+    line-height: 1;
+    color: #000000;
+    text-shadow: 0 0 0.25em #00f2ff;
+}
+        
+.heart-container {
+  width: 60%;
+  height: 70%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  position: absolute;
+  z-index: 5;
+  border: solid 0.1em #00f2ff;
+  border-radius: 0;
+  -webkit-mask:
+    radial-gradient(circle 20px at top left, transparent 98%, black) top left,
+    radial-gradient(circle 20px at top right, transparent 98%, black) top right,
+    radial-gradient(circle 20px at bottom left, transparent 98%, black) bottom left,
+    radial-gradient(circle 20px at bottom right, transparent 98%, black) bottom right;
+  -webkit-mask-size: 50% 50%;
+  -webkit-mask-repeat: no-repeat;
+  mask:
+    radial-gradient(circle 20px at top left, transparent 98%, black) top left,
+    radial-gradient(circle 20px at top right, transparent 98%, black) top right,
+    radial-gradient(circle 20px at bottom left, transparent 98%, black) bottom left,
+    radial-gradient(circle 20px at bottom right, transparent 98%, black) bottom right;
+  mask-size: 50% 50%;
+  mask-repeat: no-repeat;
+}
+.heart-symbol-large {
+    font-size: clamp(32px, 10vw, 100px); /* ✅ масть в центрі карти теж адаптивна */
+    color: #000000;
+    text-shadow: 0 0 10px #00f2ff;
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.8s; }
+.card:nth-child(3) { animation-delay: 1.5s; }
+.card:nth-child(4) { animation-delay: 2.2s; }
+.card:nth-child(5) { animation-delay: 2.9s; }
+        
+@keyframes deal-card {
+    from {
+        opacity: 0;
+        transform: translateX(-500px) rotate(-30deg) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1);
+    }
+}
+
+@keyframes glow-pulse {
+    from {
+        box-shadow: 0 0 15px var(--neon-shadow);
+    }
+    to {
+        box-shadow: 0 0 30px var(--neon-shadow);
+    }
+}
+
+#preloader-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
