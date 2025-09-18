@@ -244,8 +244,8 @@ function renderStreams() {
       const channel = this.dataset.channel;
 
       // Створюємо iframe прямо в DOM, щоб fullscreen працював
-      const iframe = document.createElement("iframe");
-      iframe.src = `https://player.twitch.tv/?channel=${channel}&parent=${window.location.hostname}`;
+const hostname = window.location.hostname; // localhost або твій домен
+iframe.src = `https://player.twitch.tv/?channel=${channel}&parent=${hostname}`;
       iframe.width = "100%";
       iframe.height = "100%";
       iframe.allow = "autoplay; fullscreen; picture-in-picture";
@@ -296,6 +296,7 @@ window.addEventListener("DOMContentLoaded", () => {
   if (defaultBtn) highlightButton(defaultBtn);
   fetchStreams();
 });
+
 
 
 
