@@ -235,32 +235,31 @@ function renderStreams() {
 
     div.innerHTML = `
       <div class="preview" data-channel="${stream.user_login}" 
-           style="background-image:url(${stream.thumbnail_url.replace('{width}', '640').replace('{height}', '360')}?time=${Date.now()})">
-        ▶️ ${stream.user_name}
+           style="background-image:url(${stream.thumbnail_url.replace('{width}', '640').replace('{height}', '360')}?time=${Date.now()}); padding-top:56.25%; position:relative; cursor:pointer;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-size:20px;">
+          ▶️ ${stream.user_name}
+        </div>
       </div>
     `;
 
     div.querySelector(".preview").addEventListener("click", function() {
       const channel = this.dataset.channel;
 
-      // Створюємо iframe прямо в DOM, щоб fullscreen працював
-const hostname = window.location.hostname; // localhost або твій домен
-iframe.src = `https://player.twitch.tv/?channel=${channel}&parent=${hostname}`;
+      // Створюємо iframe замість preview
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://player.twitch.tv/?channel=${channel}&parent=${window.location.hostname}`;
       iframe.width = "100%";
       iframe.height = "100%";
-      iframe.allow = "autoplay; fullscreen; picture-in-picture";
-      iframe.setAttribute("allowfullscreen", "");
-      iframe.setAttribute("webkitallowfullscreen", "");
-      iframe.setAttribute("mozallowfullscreen", "");
+      iframe.style.position = "absolute";
+      iframe.style.top = 0;
+      iframe.style.left = 0;
+      iframe.setAttribute("allowfullscreen", "true");
+      iframe.setAttribute("webkitallowfullscreen", "true"); // iOS Safari
+      iframe.setAttribute("mozallowfullscreen", "true");    // Firefox
+      iframe.setAttribute("autoplay", "true");
 
-      // Очищаємо див і вставляємо iframe
-      this.replaceWith(iframe);
-
-      // Задаємо висоту адаптивно під превью
-      iframe.style.height = `${iframe.offsetWidth * 9 / 16}px`; // 16:9
-      window.addEventListener("resize", () => {
-        iframe.style.height = `${iframe.offsetWidth * 9 / 16}px`;
-      });
+      this.innerHTML = "";
+      this.appendChild(iframe);
     });
 
     container.appendChild(div);
@@ -296,6 +295,7 @@ window.addEventListener("DOMContentLoaded", () => {
   if (defaultBtn) highlightButton(defaultBtn);
   fetchStreams();
 });
+
 
 
 
