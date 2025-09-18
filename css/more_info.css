@@ -238,7 +238,7 @@
 
 .central-symbol {
     filter: blur(1px);
-    font-size: 8rem;
+    font-size: 7rem;
     position: absolute;
     top: 43%;
     left: 50%;
@@ -328,4 +328,5 @@
   }
 
 }
+
 
