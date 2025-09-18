@@ -212,7 +212,6 @@ async function fetchStreams() {
       document.getElementById("streams-container").innerHTML = "";
 
       if (streams.length === 0) {
-        // Якщо стрімів немає — показуємо повідомлення
         document.getElementById("streams-container").innerHTML = `<p style="color:white; text-align:center; margin:20px;">Unfortunately, there are no streams available for this language.</p>`;
         document.getElementById("loadMore").style.display = "none";
       } else {
@@ -236,39 +235,28 @@ function renderStreams() {
 
     div.innerHTML = `
       <div class="preview" data-channel="${stream.user_login}" 
-           style="background-image:url(${stream.thumbnail_url.replace('{width}', '640').replace('{height}', '360')}?time=${Date.now()});
-                  background-size:cover;
-                  background-position:center;
-                  width:100%;
-                  aspect-ratio:16/9;">
+           style="background-image:url(${stream.thumbnail_url.replace('{width}', '640').replace('{height}', '360')}?time=${Date.now()})">
         ▶️ ${stream.user_name}
       </div>
     `;
 
+    // Клік по preview
     div.querySelector(".preview").addEventListener("click", function() {
       const channel = this.dataset.channel;
-      const iframeDiv = document.createElement("div");
-      iframeDiv.style.width = "100%";
-      iframeDiv.style.aspectRatio = "16/9"; // адаптивна висота
-      this.replaceWith(iframeDiv);
 
-      new Twitch.Player(iframeDiv, {
-        channel: channel,
-        width: '100%',
-        height: '100%',
-        autoplay: true,
-        muted: false
-      });
+      // Очищаємо preview і вставляємо iframe
+      this.innerHTML = "";
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://player.twitch.tv/?channel=${channel}&parent=${window.location.hostname}`;
+      iframe.width = "100%";
+      iframe.height = "100%";
+      iframe.style.aspectRatio = "16/9"; // для адаптивної висоти
+      iframe.setAttribute("allowfullscreen", "true");
+      iframe.setAttribute("webkitallowfullscreen", "true"); // iOS Safari
+      iframe.setAttribute("mozallowfullscreen", "true");    // Firefox
+      iframe.setAttribute("autoplay", "true");
 
-      // Додаємо підтримку fullscreen
-      setTimeout(() => {
-        const iframe = iframeDiv.querySelector("iframe");
-        if (iframe) {
-          iframe.setAttribute("allowfullscreen", "true");
-          iframe.setAttribute("webkitallowfullscreen", "true"); // iOS Safari
-          iframe.setAttribute("mozallowfullscreen", "true");    // Firefox
-        }
-      }, 500);
+      this.appendChild(iframe);
     });
 
     container.appendChild(div);
@@ -304,5 +292,6 @@ window.addEventListener("DOMContentLoaded", () => {
   if (defaultBtn) highlightButton(defaultBtn);
   fetchStreams();
 });
+
 
 
