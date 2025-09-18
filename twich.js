@@ -240,23 +240,27 @@ function renderStreams() {
       </div>
     `;
 
-    // Клік по preview
     div.querySelector(".preview").addEventListener("click", function() {
       const channel = this.dataset.channel;
 
-      // Очищаємо preview і вставляємо iframe
-      this.innerHTML = "";
+      // Створюємо iframe прямо в DOM, щоб fullscreen працював
       const iframe = document.createElement("iframe");
       iframe.src = `https://player.twitch.tv/?channel=${channel}&parent=${window.location.hostname}`;
       iframe.width = "100%";
       iframe.height = "100%";
-      iframe.style.aspectRatio = "16/9"; // для адаптивної висоти
-      iframe.setAttribute("allowfullscreen", "true");
-      iframe.setAttribute("webkitallowfullscreen", "true"); // iOS Safari
-      iframe.setAttribute("mozallowfullscreen", "true");    // Firefox
-      iframe.setAttribute("autoplay", "true");
+      iframe.allow = "autoplay; fullscreen; picture-in-picture";
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.setAttribute("webkitallowfullscreen", "");
+      iframe.setAttribute("mozallowfullscreen", "");
 
-      this.appendChild(iframe);
+      // Очищаємо див і вставляємо iframe
+      this.replaceWith(iframe);
+
+      // Задаємо висоту адаптивно під превью
+      iframe.style.height = `${iframe.offsetWidth * 9 / 16}px`; // 16:9
+      window.addEventListener("resize", () => {
+        iframe.style.height = `${iframe.offsetWidth * 9 / 16}px`;
+      });
     });
 
     container.appendChild(div);
@@ -292,6 +296,7 @@ window.addEventListener("DOMContentLoaded", () => {
   if (defaultBtn) highlightButton(defaultBtn);
   fetchStreams();
 });
+
 
 
 
